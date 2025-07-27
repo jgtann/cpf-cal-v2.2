@@ -8,4 +8,5 @@ export default defineConfig({
     react(),
     tailwindcss(
     )],
+    base: '/cpf-cal-v2.2/',
 })
