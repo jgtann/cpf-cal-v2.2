@@ -20,11 +20,14 @@ rootfile > index.css
 rootfile > main.tsx
 rootfile > index.html
 rootfile > tailwind.config.js
+rootfile > .github\workflows /*for deployment on github.io
 
 (otherfiles are automated with Create Vite)
 
 ===
-Calculation logics based on CPF official announcements. Main reference website: https://www.cpf.gov.sg/member/growing-your-savings/earning-higher-returns/earning-attractive-interest
+Calculation logics based on CPF official announcements. Main reference websites:
+https://www.cpf.gov.sg/member/growing-your-savings/earning-higher-returns/earning-attractive-interest
+https://dollarsandsense.sg/cpf-medisave-heres-basic-healthcare-sum-might-look-like-youre-55/
 
 (reference rootfile > src > utils > cpfCalculator.js)
 ```
