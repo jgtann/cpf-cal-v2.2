@@ -1,0 +1,39 @@
+name: Deploy static content to Pages
+on:
+  push:
+    branches: ['master']    # Run on pushes to the main branch
+  workflow_dispatch:      # Allow manual trigger if needed
+permissions:
+  contents: read          # Required for actions to read the repo
+  pages: write            # Grant write access to publish to Pages
+  id-token: write         # Grant access for OpenID Connect (used by Pages deploy)
+concurrency:
+  group: 'pages'
+  cancel-in-progress: true
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages   # Deploy to the GitHub Pages environment
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 'lts/*'
+          cache: npm
+      - name: Install dependencies
+        run: npm ci
+      - name: Build project
+        run: npm run build
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: './dist'   # Upload the dist folder as an artifact
+      - name: Deploy to GitHub Pages
+        id: deployment     # mark this step as the deployment step
+        uses: actions/deploy-pages@v4
