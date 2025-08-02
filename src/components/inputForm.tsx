@@ -51,9 +51,9 @@ export default function InputForm({ onCalculate }: InputFormProps) {
   return (
     <form
       onSubmit={handleSubmit}
-      className="bg-teal-800 grid grid-cols-2 gap-10 mb-20 p-10 shadow rounded-lg"
+      className="bg-teal-800 grid grid-cols-1 sm:grid-cols-2 gap-6 p-4 sm:p-6 lg:p-10 shadow rounded-lg max-w-screen-md mx-auto w-full"
     >
-      <h2 className="bg-teal-900 col-span-2 text-2xl font-bold mb-2 text-white">
+      <h2 className="bg-teal-900 col-span-1 sm:col-span-2 text-2xl font-bold mb-2 text-white text-center">
         Personal Info
       </h2>
 
@@ -134,11 +134,11 @@ export default function InputForm({ onCalculate }: InputFormProps) {
       </div>
 
       {/* Buttons */}
-      <div className="col-span-2 mt-4 flex gap-4">
+      <div className="col-span-1 sm:col-span-2 mt-4 flex flex-col sm:flex-row gap-4 justify-center">
         <button
           type="submit"
           disabled={!isAgeValid}
-          className={`w-32 font-bold py-2 px-4 rounded ${
+          className={`w-full sm:w-32 font-bold py-2 px-4 rounded transition ${
             !isAgeValid
               ? "bg-gray-400 text-white cursor-not-allowed"
               : "bg-white text-teal-800 hover:bg-teal-100"
@@ -149,7 +149,7 @@ export default function InputForm({ onCalculate }: InputFormProps) {
         <button
           type="button"
           onClick={handleClear}
-          className="w-32 bg-gray-300 font-bold py-2 px-4 rounded hover:bg-gray-600 disabled:opacity-50"
+          className="w-full sm:w-32 bg-gray-300 font-bold py-2 px-4 rounded hover:bg-gray-600 disabled:opacity-50"
         >
           Clear
         </button>
